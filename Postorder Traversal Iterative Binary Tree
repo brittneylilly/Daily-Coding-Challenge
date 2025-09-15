@@ -1,0 +1,73 @@
+'''
+Travese a binary tree using postorder traversal (left, right, root). Since I'm
+visiting every node, I know
+time complexity will be O(n) since i'm traversing the entire tree. 
+put each node value in a list in the post order. 
+return a post order list of node values
+
+IOEC:
+Inputs: root of binary tree
+Outputs: a list of values at each node in post order
+Edgecases: only the root exists, so return a list with just the root
+Constraints in Time and Space Complexity: No but the tree is assumed to be balanced
+'''
+
+class TreeNode:
+    def __init__(self, value, left = None, right = None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def survey_tree(root):
+    #stack one puts every node and it's right and left child onto stack 1 
+    stack1=[]
+    
+    #create a stack to hold the nodes in reverse post order, 
+    #so when they're popped it's in corrent reverse order
+    stack2=[] 
+
+    #will hold the node values in postorder
+    result =[]
+
+    #if a root exists, appened to stack 1
+    if root:
+        stack1.append(root)
+
+    #while stack1 exists, pop top node and append to stack 2
+    while stack1:
+        current = stack1.pop()
+        stack2.append(current)
+
+        #check if the popped node has a left child, if so append to stack1
+        if current.left:
+            stack1.append(current.left)
+
+        #check if the popped node has a right child, if so append to stack 1
+        if current.right:
+            stack1.append(current.right)
+
+    #once all nodes and their children on in stack 2, begin popping from stack2
+    while stack2:
+        #pop top element from stack and put its value in the results list
+        result.append(stack2.pop().value)
+    
+    #return the list of noces in postorder traversal 
+    return result
+
+#Test Cases:
+magnolia = TreeNode("Root", 
+              TreeNode("Node1", TreeNode("Leaf1")),
+               TreeNode("Node2", TreeNode("Leaf2"), TreeNode("Leaf3")))
+
+
+#edgecase: no root, return []
+magnolia = None
+print(survey_tree(magnolia))
+
+'''
+Time complexity:
+O(n) because every node is visited once, and the increase in the number of nodes corresponds to the 
+increase in the number of appends to and pops from the stacks. 
+
+Space Complexity:
+'''
