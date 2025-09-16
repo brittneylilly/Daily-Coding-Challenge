@@ -65,9 +65,12 @@ magnolia = None
 print(survey_tree(magnolia))
 
 '''
-Time complexity:
-O(n) because every node is visited once, and the increase in the number of nodes corresponds to the 
-increase in the number of appends to and pops from the stacks. 
+Time complexity: Linear O(n)  
+Each node requires 4 actions: append to stack 1,
+pop from stack 1, append to stack 2, pop from stack 2. 
+In binary tree traversal, these steps are performed on 
+each node. Thus as the number of nodes in a tree increases,
+the number of steps to complete the algorithm increases
 
 Space Complexity:
 '''
