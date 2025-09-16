@@ -1,0 +1,97 @@
+#Understand
+'''
+Summarize:
+
+Given the root of a binary tree and an integer value called threshold as the
+parameters for a function, find the nodes with values greater than threshold
+and add those nodes together. Return the sum of these nodes
+
+IOEC
+Input: (root, integer value)
+Ouput: sum of the value of the nodes, integer
+Edge Cases/Test:
+1) if there are no nodes greater than the threshold value, return sum as 0
+2) only 1 node greater than threshold, return the value of that node
+Constraints (on time and space complexity): None but assume the tree is balanced
+
+Questions:
+Will the tree be a binary search tree? no
+'''
+
+#Plan
+'''
+I'm thinking will i need to traverse the entire tree. like is there a way
+to determine if a node is greater than threshold. If this were a binary 
+search tree, you likely wouldn't have to traverse the entire tree bc
+you'd know that a nodes left subtree is less than the node, and it's right
+subtree is higher than the node, so if threshold was say 5, and the root node
+is 5, then I know I don't need to traverse the root's left subtree. I'd only
+need to traverse the right subtree. 
+But since our input is a binary tree, rather than a binary search tree, I 
+cannot guarantee a tree that follows the BST ordering rules. Therefore I will
+have to traverse the entire tree.
+
+Pseudocode:
+initialize a sum variable to 0
+
+Traverse the entire tree using post order traversal
+
+when I pop a node from stack2, check if node.value its greater than threshold
+if greater than threshold, add node.value to the running sum total
+if less than or equal to threshold, continue
+
+Once all nodes are popped from stack 2, return the sum
+'''
+
+#Implement
+
+class TreeNode():
+    def __init__ (self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right 
+
+
+def harvest_berries(root, threshold):
+
+    #initialize a sum variable to 0
+    sum = 0 
+
+    #initialize 2 stacks for post order traversal
+    stack1=[]
+    stack2=[]
+    
+    #Traverse the entire tree using post order traversal
+    if root:
+        stack1.append(root)
+
+    while stack1:
+        current = stack1.pop()
+        stack2.append(current)
+
+        if current.left:
+            stack1.append(current.left)
+        
+        if current.right:
+            stack1.append(current.right)
+
+    while stack2:
+        top = stack2.pop()
+
+        #check if popped node.value its greater than threshold
+        #if greater than threshold, add node.value to the running sum total
+        if top.value > threshold:
+            sum = sum + top.value
+
+    #Once all nodes are popped from stack 2, return the sum
+    return sum
+
+    
+#test cases:
+root = TreeNode(4, TreeNode(10, TreeNode(5), TreeNode(8)), TreeNode(6, None, TreeNode(20)))
+
+#happy case
+print(harvest_berries(root, 6)) #return 38
+
+#edgecase: 1) if there are no nodes greater than the threshold value, return sum as 0
+print(harvest_berries(root, 30)) #return 0
