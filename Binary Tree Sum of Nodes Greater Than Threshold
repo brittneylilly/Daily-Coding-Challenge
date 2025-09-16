@@ -95,3 +95,8 @@ print(harvest_berries(root, 6)) #return 38
 
 #edgecase: 1) if there are no nodes greater than the threshold value, return sum as 0
 print(harvest_berries(root, 30)) #return 0
+
+'''
+Time Complexity: Linear O(n) 
+because the number of steps grows linearly with the number of nodes in the tree
+'''
