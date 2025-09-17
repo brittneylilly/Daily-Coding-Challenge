@@ -1,0 +1,32 @@
+#Understand
+'''
+Traverse every node in binary tree to check if a specific node value is in the tree.
+
+#IOEC
+Input: root of binary tree, target flower
+Output: True or False
+Edgecases: 
+1)Account for flower not found, return false
+2)If no root return false
+Constraints on time and space complexity: None but assume the tree is balanced
+
+'''
+
+#Plan
+'''
+I know I'll need to traverse the entire tree so I can use whatever traversal order
+I want, I'm most comfortable with post order and I think it works well for this bc
+the fact that i'm checking nodes as they're being popped off the second stack 
+ensures all nodes are visited. 
+Con is that post order utilizes 2 stacks
+so it might be more space/memory intensive than other traversal orders?
+
+Pseudocode:
+#initialize a stack 1 store visited nodes
+#initialize a stack 2 to store nodes in reverse post order
+#traverse the tree using post order traversal
+#when popping nodes from stack2, check node:
+#if node is equal to target flower, return true
+#if no nodes are equal to target flower, 
+#return false at the end 
+'''
