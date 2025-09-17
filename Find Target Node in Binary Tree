@@ -30,3 +30,22 @@ Pseudocode:
 #if no nodes are equal to target flower, 
 #return false at the end 
 '''
+
+
+
+
+
+
+#Test Cases:
+
+#Build the tree
+root = TreeNode("Rose", TreeNode("Lily", TreeNode("Orchid"), TreeNode("Lilac")), TreeNode("Daisy", None, TreeNode("Dahlia")))
+
+#Happy Case: #return True 
+print(find_flower(root, "Lilac")) #return True
+
+#Edgecase: return false
+print(find_flower(root, "Hibiscus")) #return False
+
+#Edgecase: Root is none, return false
+print(find_flower(None, None)) #return False
