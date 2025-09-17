@@ -31,9 +31,42 @@ Pseudocode:
 #return false at the end 
 '''
 
+#Implement
+class TreeNode():
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.right = right
+        self.left = left
 
+def find_flower(root, flower):
 
+    #initialize a stack 1 store visited nodes
+    stack1=[]
+    #initialize a stack 2 to store nodes in reverse post order
+    stack2=[]
+    #traverse the tree using post order traversal
+    if root:
+        stack1.append(root)
 
+    while stack1:
+        current = stack1.pop()
+        stack2.append(current)
+
+        if current.left:
+            stack1.append(current.left)
+
+        if current.right:
+            stack1.append(current.right)
+
+    while stack2:
+        #when popping nodes from stack2, check node:
+        top = stack2.pop()
+        #if node is equal to target flower, return true
+        if top.value == flower:
+            return True
+    #if no nodes are equal to target flower, 
+    #return false at the end 
+    return False
 
 
 #Test Cases:
