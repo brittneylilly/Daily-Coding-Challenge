@@ -1,0 +1,37 @@
+class TreeNode():
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def inorder_traversal(root): #inorder = Left, Root, right
+    
+    #create an empty result list
+    results=[]
+    #create stack
+    stack = []
+    #create an empty result list
+    current = root
+
+    #outer loop to continue traversing the whole tree
+    while current or stack:
+        #inner while loop to keep traversing down to the left most leaf
+        while current:
+            stack.append(current)
+            current = current.left
+            
+        current = stack.pop()
+        results.append(current.value)
+        current = current.right
+
+    return results  
+
+
+#build the tree
+root = TreeNode(7, TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(5, None, TreeNode(6))), TreeNode(11, TreeNode(9), TreeNode(14, TreeNode(12), TreeNode(16))))
+
+#test cases
+#root = TreeNode(2, TreeNode(1), TreeNode(3))
+#root = TreeNode(1, None, TreeNode(2, None, TreeNode(3)))
+inorder_traversal(root)
