@@ -4,8 +4,27 @@ class TreeNode:
         self.left = left
         self.right = right
 
+#print tree function to print tree as list
+def print_tree(root):
+    if not root:
+        return "Empty"
+    result = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node:
+            result.append(node.value)
+            queue.append(node.left)
+            queue.append(node.right)
+        else:
+            result.append(None)
+    while result and result[-1] is None:
+        result.pop()
+    print(result)
 
 #first I have to build the tree like this 
 root = TreeNode("Poseidon", TreeNode("Atlantis", TreeNode("Coral"), TreeNode("Pearl")),
                  TreeNode("Oceania", TreeNode("Kelp"), TreeNode("Reef")))
 
+#then call the print_tree function and pass in the root of the tree i just built
+print_tree(root)
