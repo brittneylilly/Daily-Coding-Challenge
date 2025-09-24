@@ -3,3 +3,9 @@ class TreeNode:
         self.value = value
         self.left = left
         self.right = right
+
+
+#first I have to build the tree like this 
+root = TreeNode("Poseidon", TreeNode("Atlantis", TreeNode("Coral"), TreeNode("Pearl")),
+                 TreeNode("Oceania", TreeNode("Kelp"), TreeNode("Reef")))
+
