@@ -1,0 +1,128 @@
+#Understand
+'''
+Given 2 lists of integers, check if everything in the first list is contained
+in the second list. if so, return True. If not return False
+
+Questions:
+# if both lists are empty are the elements in a considered to be in b? YES
+# can either or both lists be none or empty? YES
+# if a is an empty list, and b exists, is the empty list technically in b? NO
+# can you pass in no list at all. like list = None? YES
+
+Edgecases
+#if list a is empty/none but list b exists --> return: False
+#if list a is empty/none and list b is empty/none --> return: True
+#if list a exists but list b is empty/none --> return: False
+#if list b is shorter than list a --> return False
+'''
+
+#Plan
+'''
+##Written in plain english:
+
+#1. Check if list a is empty/none but list b exists, if so return False
+#1a.Check if list a is empty/none and list b is too, if so return True
+#1b.Check if list a exists, but b is empty/none, if so return False
+#1c.Check if list b is shorter than list a, if so return False
+#2. Loop through every element in list a.
+#2a. Inside the loop, ask if the element is in b.
+#2b. if the element is in b, continue the loop
+#2c. if the element is not in b, return false
+#3. outside of loop return true
+
+##Pseudocode
+
+function all_in(list a, list b)
+    if b:                                       #1
+        if list a is empty or none:
+            return False
+
+    if a is empty or none:                      #1a
+        if b is empty or none:
+            return True
+
+    if a:                                       #1b
+        if b is empty or none:
+            return False
+             
+    if lenght of a is > length of b:            #1c
+        return False
+
+        
+    for elem in a:                              #2
+        if elem in b:                           #2a
+            continue                            #2b
+        else if elem not in b                   #2c
+            return false
+
+    return true once loop complete              #3
+end        
+'''
+
+#Implement
+def all_in(a, b):
+    if b:                                       
+        if a is None or a == []: 
+            return False
+
+    if a is None:                      
+        if b is None:
+            return True
+
+    if a:                                       
+        if b is None:
+            return False
+             
+    if len(a) > len(b):           
+        return False
+ 
+    for elem in a:                              
+        if elem in b:                           
+            continue                            
+        else: 
+            return False
+
+    return True
+
+
+
+##TestCases
+
+#Happy cases
+# lst_1 = [1, 2] 
+# lst_2 = [1, 2, 3]
+# print(all_in(lst_1, lst_2)) #return True
+# print(all_in(lst_2, lst_1)) #return False
+
+#Edgecases
+#if list a is empty/none but list b exists --> return: False
+a = [] #a is empty
+b = [1,2,3]
+print(all_in(a,b)) #return False
+
+# a = None #a is None
+# b=[1,2,3]
+# print(all_in(a,b)) #return False
+
+# #if list a is empty/none and list b is empty/none --> return: True
+# a = [] #a is empty
+# b = []
+# print(all_in(a,b)) #return True
+
+# a = None #a is None
+# b= None
+# print(all_in(a,b)) #return True
+
+# #if list a exists but list b is empty/none --> return: False
+# lst_1 = [1, 2] 
+# lst_2 = []
+# print(all_in(lst_1, lst_2)) #return False
+
+# lst_1 = [1, 2] 
+# lst_2 = None
+# print(all_in(lst_1, lst_2)) #return False
+
+# #if list b is shorter than list a --> return False
+# lst_1 = [1, 2] 
+# lst_2 = [2]
+# print(all_in(lst_1, lst_2)) #return False
