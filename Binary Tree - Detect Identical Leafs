@@ -49,7 +49,34 @@ Pseudocode
 #else return False
 '''
 
+#Implement
+class TreeNode():
+    def __init__(self, value, left = None, right = None):
+        self.value = value
+        self.left = left
+        self.right = right
 
+#function matchingchild(root)
+def matchingchild(root):
+
+    #if root.left is None and root.right is None, return False
+    if root.left is None and root.right is None:
+        return False
+    
+    #else if root's right childen exist and root's left child does not, return False
+    elif root.right and root.left is None:
+        return False
+
+    #else if root's left child exists and root's right child does not exist, return False
+    elif root.left and root.right is None:
+        return False
+
+    #else if both children exist
+    #if root's left child equals root's right child, return True, else return False
+    else:
+        if root.left.value == root.right.value:
+            return True
+        return False
 
 
 
