@@ -48,3 +48,31 @@ Pseudocode
 #return True
 #else return False
 '''
+
+
+
+
+
+#TESTCASES
+#Edgecases:
+# no children --> False
+root = TreeNode("Mermother", None, None)
+
+# 1 child: left --> False
+root1 = TreeNode("Merenby", TreeNode("Mermother"), None)
+
+# 1 child: Right --> False
+root2 = TreeNode("Merenby", None, TreeNode("Coral"))
+
+#Happy Testcases:
+# 2 children the same --> True
+root3 = TreeNode("Mermother", TreeNode("Coral"), TreeNode("Coral"))
+
+# 2 children different --> False
+root4 = TreeNode("Merpapa", TreeNode("Calypso"), TreeNode("Coral"))
+
+print(matchingchild(root))
+print(matchingchild(root1))
+print(matchingchild(root2))
+print(matchingchild(root3))
+print(matchingchild(root4))
