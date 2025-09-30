@@ -1,0 +1,50 @@
+#Understand
+'''
+Traverse the given binary tree to
+Evaluate if the left and right child of a binary tree have the same
+value. if yes, return tree. If the root has not childre. return false
+
+IOEC
+Input: root of a binary tree
+Output: True or False
+Edgecases:
+
+#Questions
+-If the tree has only 1 child, okay to return False? Yes
+- Could there be a case where a root is not passed in
+
+Edgecases:
+# no children --> False
+# 1 child --> False
+
+Happy Testcases:
+# 2 children the same --> True
+# 2 children different --> False
+
+Constraints on Time and Space Complexity: No
+'''
+
+#Plan
+'''
+In plain english:
+#check if no children, and if not return False
+#check if 1 child, and if so, return False
+#else: root has 2 children
+#compare left node's value with right node's value
+# if values are equal, return True
+# if values are different, return False
+
+
+Pseudocode
+#function matchingchild(root)
+#if root.left is None and root.right is None
+#return False
+#else if root's right childen exist and root's left child does not.
+#return False
+#else if root's left child exists and roots right child does not exist
+#return False
+#else if both children exist
+#if root's left child equals root's right child
+#return True
+#else return False
+'''
