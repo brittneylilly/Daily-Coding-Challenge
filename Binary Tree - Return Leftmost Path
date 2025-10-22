@@ -1,0 +1,58 @@
+'''
+IOEC
+Input: root of a binary tree
+Output: an array that contains the values of left most nodes
+starting from root
+Edgecases:
+if root has no left child --> return value of root
+if root is None --> return []
+if root is Null --> return []
+
+Constraints on time and space complexity: None. assume tree is
+balanced
+'''
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+'''
+#plain english
+use preorder traversal to keep grabbing the left most nodes. 
+and as i do put them into an array. 
+once i reach a node with no left child, return the array
+'''
+def leftmost_path(root):
+
+   #Pseudocode
+   #instantiate empty array called result
+   result = []
+
+   #if root does not exist, return result
+   if not root:
+       return result
+
+   #else continue with traversal
+   # create a stack for iterating through list
+   else:
+       stack = []
+       
+       #push the root on the stack
+       stack.append(root)
+       
+       #while the stack is not empty
+       while stack:
+           #pop top element from stack and save as current
+           current = stack.pop()
+           
+           #add current.value to result array
+           result.append(current.value)
+           
+           #if current has a left child, push it to stack 
+           if current.left:
+               stack.append(current.left)
+
+#return result
+   return result
