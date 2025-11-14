@@ -1,0 +1,87 @@
+'''
+Task: Given a sorted list of integers and an integer value x as parameters, 
+return the index of the largest element in the list smaller than or equal 
+to x. If such an element does not exist, return -1 
+
+Input:
+lst is a sorted list of integers
+x can be a float or an integer
+
+
+Question:
+# can the list contain negative numbers? no, 1 is the smallest number
+# can the list contain 0? no, 1 is the smallest number
+# is x always in integer? No. so if x is not an integer, return -1
+# does it matter if lst is sorted in ascending order or descending order
+
+Edgecases:
+# every element in the list is larger than x --> return: -1
+# lst is empty --> return -1
+# lst has 1 item and its greater than x --> return -1
+# lst has 1 item and its equal to x --> return 0
+# lst has 1 item and its smaller than x --> return 0
+# if x is 0 --> return -1
+'''
+
+#cons of this iterative solution is that it doesn't take advantage of the list being sorted
+# def find_floor(lst, x):
+# 	while x > 0:
+# 		for i in range(len(lst)):
+# 			if lst[i] == x:
+# 				return i
+# 		x = x - 1
+# 	return -1
+
+def find_floor(lst, x): 
+    left, right = 0 , len(lst) - 1
+    floor_value = -1
+    while left <= right:
+        middle_index = (left + right)//2
+        if lst[middle_index] > x:
+            right = middle_index -1
+        else:
+            floor_value = middle_index
+            left = middle_index + 1
+        
+    return floor_value
+
+
+#test cases:
+lst = [1, 2, 4, 10, 11, 12, 19]
+x = 5
+print(find_floor(lst, x)) #return 1
+
+#if x = 1, and there's only 1 element in the list and x is not the element in the list
+lst = [2]
+x = 1
+print(find_floor(lst, x)) #return -1
+
+# every element in the list is larger than x 
+lst = [6, 7, 8, 10, 11, 12, 19]
+x = 5
+print(find_floor(lst, x)) #return -1
+
+# lst is empty 
+lst = []
+x = 5
+print(find_floor(lst, x)) #return -1
+
+# lst has 1 item and its greater than x 
+lst = [19]
+x = 5
+print(find_floor(lst, x)) #return -1
+
+# lst has 1 item and its equal to x 
+lst = [5]
+x = 5
+print(find_floor(lst, x)) #return 0
+
+# lst has 1 item and its smaller than x
+lst = [3]
+x = 5
+print(find_floor(lst, x)) #return 0
+
+# if x is 0 
+lst = [1, 2, 8, 10, 11, 12, 19]
+x = 0
+print(find_floor(lst, x)) #return -1
