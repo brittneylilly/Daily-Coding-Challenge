@@ -45,4 +45,9 @@ bc the loop essentially runs the same number of times as the input size, which i
 and inside the loop the "worst case" time complexit for any operation is
 O(1), since all the operations inside this loop are O(1).
 So the time complexity = O(n) x O(1) = O(n)
+
+Space Complexity: O(n) Linear
+Bc result_lst is the only created variable/data structure, and its filled with every
+item in the input parameter, so the proportionality is linear.
 '''
+
