@@ -27,4 +27,8 @@ Bc the loop essentially runs the same number of times as the size of the list,
 and the "worst" time complexity for operations inside the loop is O(1) 
 (all the operations inside this loop were O(1))
 So O(n) x O(1) = O(n)
+
+Space Complexity: O(1) Constant
+Bc the there are only 2 variables created and their size doesn't grow with the 
+size of the input parameter, so the space/memory needed is constant O(1)
 '''
