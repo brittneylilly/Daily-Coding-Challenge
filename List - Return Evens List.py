@@ -52,3 +52,6 @@ print(get_evens(lst))
 lst = [1, 0, 3]
 print(get_evens(lst))
 
+#Time Complexity: O(n) Linear
+#Space Complexity: O(n) Linear
+
